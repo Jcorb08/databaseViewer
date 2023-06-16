@@ -16,8 +16,9 @@ public class BetController {
     }
 
     @PostMapping("/insertFromJson")
-    public void insertUsersFrom(@RequestParam String filepath){
+    public @ResponseBody String insertUsersFrom(@RequestParam String filepath){
         betService.insertUsersFromJsonFile(filepath);
+        return "Success";
     }
 
     @GetMapping(path="/")
