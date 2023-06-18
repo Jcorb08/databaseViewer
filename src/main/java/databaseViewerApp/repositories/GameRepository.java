@@ -1,5 +1,6 @@
-package databaseViewerApp;
+package databaseViewerApp.repositories;
 
+import databaseViewerApp.models.Game;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;

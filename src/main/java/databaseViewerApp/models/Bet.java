@@ -1,4 +1,4 @@
-package databaseViewerApp;
+package databaseViewerApp.models;
 
 import jakarta.persistence.*;
 

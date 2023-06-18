@@ -1,5 +1,6 @@
-package databaseViewerApp;
+package databaseViewerApp.repositories;
 
+import databaseViewerApp.models.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository

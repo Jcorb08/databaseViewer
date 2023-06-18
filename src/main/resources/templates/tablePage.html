@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bets Table</title>
+</head>
+<body>
+<h1>Bets Table</h1>
+<p>Filter the Database</p>
+<form>
+    <div>
+        <label for="form-date">Date:</label>
+        <input id="form-date" type="date" name="date" th:value="${paramDate}">
+    </div>
+    <div>
+        <label for="form-client-id">Client ID:</label>
+        <input id="form-client-id" type="number" name="client_id" th:value="${paramClientID}">
+    </div>
+    <div>
+        <label for="form-game-name">Game Name:</label>
+        <input id="form-game-name" type="text" name="game_name" th:value="${paramGameName}">
+    </div>
+    <input type="submit" value="Submit">
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Number of Bets</th>
+        <th>Stake</th>
+        <th>Returns</th>
+        <th>Client ID</th>
+        <th>Game</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${tableData}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.date}"></td>
+        <td th:text="${item.number_of_bets}"></td>
+        <td th:text="${item.stake}"></td>
+        <td th:text="${item.returns}"></td>
+        <td th:text="${item.client_id.getId()}"></td>
+        <td th:text="${item.game_id.getName()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<style>
+    h1,p {
+        text-align: center;
+    }
+    form {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 4px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #DDD;
+    }
+
+    tr:hover {background-color: #D6EEEE;}
+</style>
+</html>

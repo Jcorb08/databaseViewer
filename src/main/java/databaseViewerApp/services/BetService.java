@@ -1,5 +1,11 @@
-package databaseViewerApp;
+package databaseViewerApp.services;
 
+import databaseViewerApp.models.Bet;
+import databaseViewerApp.models.Client;
+import databaseViewerApp.models.Game;
+import databaseViewerApp.repositories.BetRepository;
+import databaseViewerApp.repositories.ClientRepository;
+import databaseViewerApp.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
