@@ -1,10 +1,37 @@
+version: "3.8"
 services:
-  mysql:
-    image: 'mysql:latest'
-    environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+  spring-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - '3306'
+      - "8080:8080"
+    depends_on:
+      - mysql-db
+      - kafka
+
+  mysql-db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./1x2Network.sql:/docker-entrypoint-initdb.d/1x2Network.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=1x2Network
+      - MYSQL_USER=springuser
+      - MYSQL_PASSWORD=ThePassword
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    ports:
+      - "2181:2181"
+
